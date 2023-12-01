@@ -1,0 +1,48 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  gap: 20px;
+
+  .fullName {
+    display: flex;
+    gap: 20px;
+  }
+
+  .birthInfo {
+    display: grid;
+    grid-template-columns:(1fr 2fr);
+    grid-gap: 50px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 95%;
+  }
+
+  @media (max-width: 560px) {
+    .fieldContainer {
+      flex-direction: column;
+    }
+  }
+}
+.customFrontendFrameworks{
+  display: flex;
+  flex-direction: column;
+  gap:10px
+}
+.customBackendFrameworks{
+  display: flex;
+  flex-direction: column;
+  gap:10px
+}
+
+
+.submitButton {
+  grid-column: span 2;
+  margin-top: 20px;
+  align-self: center;
+}
