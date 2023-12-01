@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
-import {store} from "api/store";
 import {Provider} from "react-redux";
-import ApplicationPage from "ApplicationPage";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import App from "pages/App";
+import ApplicationPage from "pages/ApplicationPage";
+import {store} from "redux/store";
 
 const routes = [
 
