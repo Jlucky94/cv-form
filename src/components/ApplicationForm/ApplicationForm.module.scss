@@ -20,7 +20,14 @@
   }
 
   @media (max-width: 768px) {
-    max-width: 95%;
+    .fullName, .birthInfo {
+      flex-direction: column;
+      grid-template-columns: 1fr;
+    }
+
+    .submitButton {
+      grid-column: auto;
+    }
   }
 
   @media (max-width: 560px) {

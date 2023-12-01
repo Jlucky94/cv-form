@@ -4,7 +4,7 @@ import {FormInputType} from "utils/zodResolvers/validationSchema";
 
 export const applicationApi = createApi({
     reducerPath: 'applicationApi',
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:9000/" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "https://cv-form-back.vercel.app/" }),
     endpoints: (builder) => ({
         createApplication: builder.mutation<void, FormInputType>({
             query: (application) => {
