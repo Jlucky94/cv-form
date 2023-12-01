@@ -7,12 +7,31 @@ export const applicationApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:9000/" }),
     endpoints: (builder) => ({
         createApplication: builder.mutation<void, FormInputType>({
-            query: (application) => ({
-                url: 'applications',
-                method: 'POST',
-                body: application,
-
-            }),
+            query: (application) => {
+                const formData = new FormData
+                Object.keys(application).forEach((key) => {
+                    const validKey = key as keyof FormInputType;
+                    if (validKey !== 'resume') {
+                        const value = application[validKey];
+                        if (Array.isArray(value)) {
+                            value.forEach(item => formData.append(validKey, item));
+                        } else if (value && typeof value === 'object' && !(value instanceof File)) {
+                            formData.append(validKey, JSON.stringify(value));
+                        } else {
+                            formData.append(validKey, value as string | Blob);
+                        }
+                    }
+                });
+                if(application.resume&&application.resume.length>0) {
+                    formData.append('resume',application.resume[0])
+                }
+                console.log(formData)
+                return{
+                    url: 'applications',
+                    method: 'POST',
+                    body: formData,
+                }
+            },
         }),
         getApplication: builder.query<Application, string>({
             query: (id) => `applications/${id}`,
